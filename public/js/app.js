@@ -9,17 +9,17 @@ weatherForm.addEventListener('submit',(e)=>{
     const location=search.value
     messageOne.textContent='Processing...'
     messageTwo.textContent=''
-    fetch('./weather?address='+encodeURIComponent(location)).then((response)=>{
-    response.json().then((data)=>{
-        if (data.error) {
-            //console.log(data.error)
-            messageOne.textContent=data.error
-        } else {
-            // console.log(data.location)
-            // console.log(data.forecast)
-            messageOne.textContent=data.location
-            messageTwo.textContent=data.forecast
-        }
+    fetch('/weather?address='+encodeURIComponent(location)).then((response)=>{
+        response.json().then((data)=>{
+            if (data.error) {
+                //console.log(data.error)
+                messageOne.textContent=data.error
+            } else {
+                // console.log(data.location)
+                // console.log(data.forecast)
+                messageOne.textContent=data.location
+                messageTwo.textContent=data.forecast
+            }
+        })
     })
-})
 })
